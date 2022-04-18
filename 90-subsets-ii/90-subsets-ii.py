@@ -3,18 +3,13 @@ class Solution:
         ans=[]
         nums.sort()
         def findCombination(ind,arr,ans,ds):
-            if(ind>=len(arr)):
-                ans.append(ds.copy())
-                return
-            ds.append(arr[ind])
-            findCombination(ind+1,arr,ans,ds)
-            ds.pop(-1)
-            findCombination(ind+1,arr,ans,ds)
-            
+            ans.append(ds.copy())    
+            for i in range(ind,len(arr)):
+                if(i!=ind and arr[i]==arr[i-1]):
+                    continue
+                ds.append(arr[i])
+                findCombination(i+1,arr,ans,ds)
+                ds.pop(-1)
         
         findCombination(0,nums,ans,[])
-        res=[]
-        for i in ans:
-            if i not in res:
-                res.append(i)
-        return res
+        return ans
