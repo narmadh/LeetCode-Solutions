@@ -6,5 +6,7 @@ class Solution:
                 return digits
             else:
                 digits[i]=0
+        #print(digits)
         digits.insert(0,1)
+        #print(digits)
         return digits
