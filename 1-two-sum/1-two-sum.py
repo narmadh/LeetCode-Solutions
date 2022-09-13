@@ -1,11 +1,9 @@
 class Solution:
     def twoSum(self, nums: List[int], target: int) -> List[int]:
-        diction={}
-        result=[]
+        ans=[]
         for i in range(len(nums)):
-            if target-nums[i] in diction.keys():
-                result.append(i)
-                result.append(diction.get(target-nums[i]))
-            else:
-                diction.__setitem__(nums[i],i)
-        return result
+            for j in range(i+1,len(nums)):
+                if(nums[i]+nums[j]==target):
+                    ans.append(i)
+                    ans.append(j)
+        return ans
